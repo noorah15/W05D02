@@ -33,7 +33,7 @@ app.get("/movie", (req, res) => {
     });
 
     if (findElm) res.status(200).json(findElm);
-    else res.status(200).send("Not found");
+    else res.status(404).send("Not found");
   });
 });
 
@@ -45,13 +45,13 @@ function addToMovies(movies) {
 
 //3-Create new movies
 app.post("/create", (req, res) => {
-  let newItemMovies = req.body;
-
+  let { name } = req.body;
   fs.readFile("./movies.json", (err, data) => {
     let newMovies = JSON.parse(data.toString());
     newMovies.push({
       id: newMovies.length + 1,
-      ...newItemMovies,
+      name,
+      isfav: false,
       isdelete: false,
     });
 
@@ -90,7 +90,7 @@ app.get("/allFav", (req, res) => {
     }
 
     if (favMovies.length !== 0) res.status(200).json(favMovies);
-    else res.status(200).send("Not found");
+    else res.status(404).send("Not found");
   });
 });
 
@@ -102,6 +102,23 @@ app.put("/delete", (req, res) => {
     let movies = JSON.parse(data.toString());
     let updatedMovies = movies.map((item) => {
       if (item.id === deleteItemMovies) {
+        item.isdelete = true;
+      }
+
+      return item;
+    });
+
+    addToMovies(updatedMovies);
+    res.status(200).json(updatedMovies);
+  });
+});
+
+app.delete("/delete", (req, res) => {
+  let { id } = req.body;
+  fs.readFile("./movies.json", (err, data) => {
+    let movies = JSON.parse(data.toString());
+    let updatedMovies = movies.map((item) => {
+      if (item.id === id) {
         item.isdelete = true;
       }
 
