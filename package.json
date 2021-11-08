@@ -1,0 +1,25 @@
+{
+  "name": "W05D02",
+  "version": "1.0.0",
+  "description": "",
+  "main": "App.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node App.js",
+    "dev": "nodemon App.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/noorah15/W05D02.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/noorah15/W05D02/issues"
+  },
+  "homepage": "https://github.com/noorah15/W05D02#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}

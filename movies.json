@@ -1,0 +1,6 @@
+[
+  { "id": 1, "name": "superman", "isfav": false, "isdelete": true },
+  { "id": 2, "name": "batman", "isfav": true, "isdelete": false },
+  { "id": 3, "name": "supergirl", "isfav": true, "isdelete": false },
+  { "id": 4, "name": "world", "isfav": false, "isdelete": false }
+]
